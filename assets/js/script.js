@@ -2,6 +2,7 @@ var firewood = document.getElementById('firewood');
 var showers = document.getElementById('showers');
 var laundry = document.getElementById('laundry');
 var Dropdown = document.getElementById('state');
+var button = document.getElementById('button');
 var apiKey = '6pJRVZpzh01tEktlNNLSmI1hVw5wXNTOuoca58uW';
 var stateCode = '';
 var state = '&api_key=';
@@ -116,7 +117,17 @@ var requestUrl =
   apiKey;
 
 function getApi() {
-  console.log(Dropdown.value);
+  // console.log(Dropdown.value);
+
+  var index = stateNameArray.indexOf(Dropdown.value);
+  // console.log(stateCodeArray[index]);
+  stateCode = stateCodeArray[index];
+  var requestUrl =
+    'https://developer.nps.gov/api/v1/campgrounds/?statecode=' +
+    stateCode +
+    state +
+    apiKey;
+  console.log(stateCode);
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
@@ -127,4 +138,4 @@ function getApi() {
 }
 // firewood option
 
-firewood.addEventListener('click', getApi);
+button.addEventListener('click', getApi);
