@@ -2,7 +2,7 @@ var firewood = document.getElementById('firewood');
 var showers = document.getElementById('showers');
 var laundry = document.getElementById('laundry');
 var Dropdown = document.getElementById('state');
-var button = document.getElementById('button');
+var buttonSearch = document.getElementById('button-search');
 var apiKey = '6pJRVZpzh01tEktlNNLSmI1hVw5wXNTOuoca58uW';
 var stateCode = '';
 var state = '&api_key=';
@@ -134,8 +134,53 @@ function getApi() {
     })
     .then(function (data) {
       console.log(data);
+      saveChecked();
     });
 }
 // firewood option
 
-button.addEventListener('click', getApi);
+
+/* Local Storage section */
+
+
+function saveChecked() {
+  var firewoodCheckBox = document.getElementById('firewood');
+  var showersCheckBox = document.getElementById("showers");
+  var laundryCheckBox = document.getElementById("laundry");
+  console.log("checkBoxes");
+
+  if (firewoodCheckBox.checked) {
+    localStorage.setItem('savedFirewood', "true");
+  }
+
+  if (showersCheckBox.checked) {
+    localStorage.setItem('savedShowers', "true");
+  }
+
+  if (laundryCheckBox.checked) {
+    localStorage.setItem('savedLaundry', "true");
+  }
+}
+
+function loadChecked() {
+  var firewoodchecked = localStorage.getItem('savedFirewood');
+  var showersChecked = localStorage.getItem("savedShowers");
+  var laundryChecked = localStorage.getItem("savedLaundry");
+
+  if (firewoodchecked == "true") {
+    document.getElementById("fireWood").checked = true;
+  }
+
+  if (showersChecked == "true") {
+    document.getElementById("showers").checked = true;
+  }
+
+  if (laundryChecked == "true") {
+    document.getElementById("laundry").checked = true;
+  }
+}
+
+loadChecked();
+
+buttonSearch.addEventListener('click', getApi);
+ 
