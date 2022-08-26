@@ -110,6 +110,9 @@ var stateCodeArray = [
   'WI',
   'WY',
 ];
+var createDiv = $('<div>').addClass(
+  ' box column has-background-primary is-size-2 is-2 has-text-centered'
+);
 
 var requestUrl =
   'https://developer.nps.gov/api/v1/campgrounds/?statecode=' +
@@ -156,7 +159,7 @@ var displayData = function (data) {
       // console.log(data.data[i]);
       // *looking for cellphone reception
     } else if (data.data[i].amenities.cellPhoneReception.includes('Yes')) {
-      console.log(data.data[i]);
+      // console.log(data.data[i]);
     }
   }
 };
