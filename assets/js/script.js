@@ -110,6 +110,7 @@ var stateCodeArray = [
   'WI',
   'WY',
 ];
+
 var requestUrl =
   'https://developer.nps.gov/api/v1/campgrounds/?statecode=' +
   stateCode +
@@ -133,9 +134,31 @@ function getApi() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      displayData(data);
     });
 }
 // firewood option
+var displayData = function (data) {
+  console.log(data);
+  // var firewoodSale = data.amenities.firewoodForSale;
+  // console.log(firewoodSale);
+  // console.log(data.data[i]);
+  for (let i = 0; i < data.data.length; i++) {
+    // console.log(data.data[i].amenities.firewoodForSale);
+    // * looking for firewood available for purchase
+    if (data.data[i].amenities.firewoodForSale.includes('Yes')) {
+      // console.log(data.data[i]);
+      // * looking for showers
+    } else if (
+      data.data[i].amenities.showers[0] !== 'None' &&
+      data.data[i].amenities.showers.length
+    ) {
+      // console.log(data.data[i]);
+      // *looking for cellphone reception
+    } else if (data.data[i].amenities.cellPhoneReception.includes('Yes')) {
+      console.log(data.data[i]);
+    }
+  }
+};
 
 button.addEventListener('click', getApi);
