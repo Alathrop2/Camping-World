@@ -39,7 +39,7 @@ async function renderWeather(city){
   apiCity = city;
   await getWeather(apiCity);
 
-  console.log(currentCityWeather);
+  // console.log(currentCityWeather);
 
   weatherObject = {
     city: apiCity,
@@ -53,7 +53,7 @@ async function renderWeather(city){
 
 }
 
-console.log(renderWeather("los+angeles"));
+// console.log(renderWeather("los+angeles"));
 
 
 
@@ -93,7 +93,7 @@ async function renderWeatherLatLon(lat,lon){
   longitude = lon;
   await getWeatherLatLon(latitude,longitude);
 
-  console.log(currentCityWeather);
+  // console.log(currentCityWeather);
 
   weatherObject = {
     city: currentCityWeather.name,
@@ -107,7 +107,7 @@ async function renderWeatherLatLon(lat,lon){
 
 }
 
-console.log(renderWeatherLatLon(34.0522,-118.2437));
+// console.log(renderWeatherLatLon(34.0522,-118.2437));
 
 
 
