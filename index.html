@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <title>Camping World!</title>
   </head>
 
@@ -23,7 +26,7 @@
         <div class="container has-text-centered">
           <h1 class="is-align-self-center">Camping World!</h1>
           <div class="is-justify-content-center select is-large is-rounded">
-            <select>
+            <select id="Dropdown">
               <option>Alabama</option>
               <option>Alaska</option>
               <option>Arizona</option>
@@ -76,7 +79,7 @@
               <option>Wisconsin</option>
               <option>Wyoming</option>
             </select>
-            <br>
+            <br />
             <section>
               <form class="has-text-centered box">
                 <label class="checkbox column">
@@ -88,7 +91,7 @@
                   Showers
                 </label>
                 <label class="checkbox column">
-                  <input id="cellphonereception" type="checkbox" />
+                  <input id="CellPhone" type="checkbox" />
                   Cell phone reception
                 </label>
               </form>
@@ -100,6 +103,7 @@
     </div>
 
     <script src="assets/js/script.js"></script>
+    <script src="./assets/js/weatherAPI.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </body>

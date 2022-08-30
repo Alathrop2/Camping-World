@@ -1,6 +1,6 @@
 var firewood = document.getElementById('firewood');
 var showers = document.getElementById('showers');
-var laundry = document.getElementById('laundry');
+var CellPhone = document.getElementById('CellPhone');
 var Dropdown = document.getElementById('state');
 var button = document.getElementById('button');
 var apiKey = '6pJRVZpzh01tEktlNNLSmI1hVw5wXNTOuoca58uW';
@@ -168,75 +168,69 @@ var displayData = function (data) {
   }
 };
 
-
 /* Local Storage section */
-
 
 // This code will check if previous states exists in local storage
 // if it does, initialize chosen states with the value of previous states in local storage
-if (localStorage.getItem("previousStates")) {
-  var chosenStates = JSON.parse(localStorage.getItem("previousStates"));
-  console.log("previous states exist");
+if (localStorage.getItem('previousStates')) {
+  var chosenStates = JSON.parse(localStorage.getItem('previousStates'));
+  console.log('previous states exist');
 } else {
   // if it does not, create a new array with the states that the user choses
   var chosenStates = [];
-  console.log("no previous states exist");
+  console.log('no previous states exist');
 }
 console.log(typeof chosenStates);
 
 // This will save the checked boxes within the local storage, or update the checkboxes when they have not been checked
 function saveChecked() {
   var firewoodCheckBox = document.getElementById('firewood');
-  var showersCheckBox = document.getElementById("showers");
-  var laundryCheckBox = document.getElementById("laundry");
-  var stateDropDown = document.getElementById("state");
+  var showersCheckBox = document.getElementById('showers');
+  var CellPhoneCheckBox = document.getElementById('CellPhone');
+  var stateDropDown = document.getElementById('state');
 
   localStorage.setItem('savedFirewood', 'false');
   localStorage.setItem('savedShowers', 'false');
-  localStorage.setItem('savedLaundry', 'false');
+  localStorage.setItem('savedCellPhone', 'false');
 
   if (firewoodCheckBox.checked) {
-    localStorage.setItem('savedFirewood', "true");
+    localStorage.setItem('savedFirewood', 'true');
   }
 
   if (showersCheckBox.checked) {
-    localStorage.setItem('savedShowers', "true");
+    localStorage.setItem('savedShowers', 'true');
   }
 
-  if (laundryCheckBox.checked) {
-    localStorage.setItem('savedLaundry', "true");
+  if (CellPhoneCheckBox.checked) {
+    localStorage.setItem('savedCellPhone', 'true');
   }
 
   // When the user clicks on a state, the state that they submit with the button will appear in their local storage
   if (stateDropDown) {
     chosenStates.push(Dropdown.value);
-    localStorage.setItem("previousStates", JSON.stringify(chosenStates));
- }
-  
-  
+    localStorage.setItem('previousStates', JSON.stringify(chosenStates));
+  }
 }
 
 // When the user loads into the page, the saved checked boxes, from the previous session, will appear checkedmarked as the last thing they saved
 function loadChecked() {
   var firewoodchecked = localStorage.getItem('savedFirewood');
-  var showersChecked = localStorage.getItem("savedShowers");
-  var laundryChecked = localStorage.getItem("savedLaundry");
+  var showersChecked = localStorage.getItem('savedShowers');
+  var CellPhoneChecked = localStorage.getItem('savedCellPhone');
 
-  if (firewoodchecked == "true") {
-    document.getElementById("firewood").checked = true;
+  if (firewoodchecked == 'true') {
+    document.getElementById('firewood').checked = true;
   }
 
-  if (showersChecked == "true") {
-    document.getElementById("showers").checked = true;
+  if (showersChecked == 'true') {
+    document.getElementById('showers').checked = true;
   }
 
-
-  if (laundryChecked == "true") {
-    document.getElementById("laundry").checked = true;
+  if (CellPhoneChecked == 'true') {
+    document.getElementById('CellPhone').checked = true;
   }
 }
 
 loadChecked();
 
 button.addEventListener('click', getApi);
- 
