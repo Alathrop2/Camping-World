@@ -110,9 +110,9 @@ var stateCodeArray = [
   'WI',
   'WY',
 ];
-var createDiv = $('<div>').addClass(
-  ' box column has-background-primary is-size-2 is-2 has-text-centered'
-);
+// var createDiv = $('<div>').addClass(
+//   ' box column has-background-primary is-size-2 is-2 has-text-centered'
+// );
 
 var requestUrl =
   'https://developer.nps.gov/api/v1/campgrounds/?statecode=' +
