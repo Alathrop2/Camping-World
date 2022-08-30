@@ -156,9 +156,9 @@ var displayData = function (data) {
     var willAddCampSite = true;
     var firewoodAvailable =
       data.data[i].amenities.firewoodForSale.includes('Yes');
-    var showerAvailable =
-      data.data[i].amenities.showers[0] !== 'None' &&
-      data.data[i].amenities.showers.length;
+    // var showerAvailable =
+    //   data.data[i].amenities.showers[0] !== 'None' &&
+    //   data.data[i].amenities.showers.length;
     var cellPhoneAvailable =
       data.data[i].amenities.cellPhoneReception.includes('Yes');
     // * looking for firewood available for purchase
@@ -168,10 +168,10 @@ var displayData = function (data) {
       }
       // console.log();
       // * looking for showers
-    } else if (showersCheckBox.checked) {
-      if (!showerAvailable) {
-        willAddCampSite = false;
-      }
+      // } else if (showersCheckBox.checked) {
+      //   if (!showerAvailable) {
+      //     willAddCampSite = false;
+      //   }
       // console.log(data.data[i]);
       // *looking for cellphone reception
     } else if (CellPhoneCheckBox.checked) {
