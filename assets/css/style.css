@@ -33,3 +33,8 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
+
+.box {
+   z-index: 1000;
+   margin-inline-end: auto;
+}
