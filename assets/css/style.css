@@ -16,7 +16,7 @@
 }
 
 .hero .is-transparent {
-   /* opacity: 0.3; */
+     opacity: 0.8;
 
 }
 .container {
@@ -24,6 +24,12 @@
   
 }
 
-.hero-body {
-  padding-top: ;
+.hero-head {
+  color: black;
+  z-index: 1000;
+  font-size: 84px;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
