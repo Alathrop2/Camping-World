@@ -7,7 +7,7 @@ var showersCheckBox = document.getElementById('showers');
 var CellPhoneCheckBox = document.getElementById('CellPhone');
 var button = document.getElementById('button');
 var apiKey = '6pJRVZpzh01tEktlNNLSmI1hVw5wXNTOuoca58uW';
-// '6pJRVZpzh01tEktlNNLSmI1hVw5wXNTOuoca58uW'
+
 var stateCode = '';
 var state = '&api_key=';
 var stateNameArray = [
@@ -121,10 +121,6 @@ var requestUrl =
   state +
   apiKey;
 
-// ! var createDiv = $('<div>').addClass(
-// !  ' box column has-background-primary is-size-2 is-2 has-text-centered'
-//! );
-
 // Campground API fetch request function
 function getApi() {
   // console.log(Dropdown.value);
@@ -143,7 +139,7 @@ function getApi() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       saveChecked();
       displayData(data);
     });
@@ -151,6 +147,14 @@ function getApi() {
 // firewood option
 var displayData = function (data) {
   var finalCampsite = [];
+  var campBox = $('.camp');
+  if (campBox.children()) {
+    campBox.children().remove();
+  }
+  var createDiv = $('<div>').addClass(
+    ' has-text-centered box is-size-2 has-background-success-dark has-text-warning-dark'
+  );
+  var website = $('<h1>').text('hello there');
 
   for (let i = 0; i < data.data.length; i++) {
     var willAddCampSite = true;
@@ -163,8 +167,8 @@ var displayData = function (data) {
       data.data[i].amenities.cellPhoneReception.includes('Yes');
     // * looking for firewood available for purchase
     if (firewoodCheckBox.checked) {
-      if (!firewoodAvailable) {
-        willAddCampSite = false;
+      if (firewoodAvailable) {
+        willAddCampSite = true;
       }
       // console.log();
       // * looking for showers
@@ -175,13 +179,15 @@ var displayData = function (data) {
       // console.log(data.data[i]);
       // *looking for cellphone reception
     } else if (CellPhoneCheckBox.checked) {
-      if (!cellPhoneAvailable) {
-        willAddCampSite = false;
+      if (cellPhoneAvailable) {
+        willAddCampSite = true;
       }
       // console.log(data.data[i]);
     }
     if (willAddCampSite) {
       finalCampsite.push(data.data[i]);
+      createDiv.append(website);
+      campBox.append(createDiv);
     }
   }
   console.log(finalCampsite);
