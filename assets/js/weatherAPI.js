@@ -1,6 +1,5 @@
-
-var apiCity = "seattle";
-var apiKey = '4d63ba9d93efddcbcaf8047f7d2ec8b0';
+var apiCity = 'seattle';
+var WeatherApiKey = '4d63ba9d93efddcbcaf8047f7d2ec8b0';
 var requestUrl;
 var latitude;
 var longitude;
@@ -8,34 +7,25 @@ var longitude;
 let currentCityWeather = {};
 let weatherObject = {};
 
-
 async function getWeather(city) {
-
   apiCity = city;
 
-  requestUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
-
-
+  requestUrl =
+    'http://api.openweathermap.org/data/2.5/weather?q=' +
+    city +
+    '&appid=' +
+    WeatherApiKey;
 
   currentCityWeather = await fetch(requestUrl)
     .then(function (response) {
-
       return response.json();
     })
     .then(function (data) {
-      
-
       return data;
-
-      
-
     });
-
-
-
 }
 
-async function renderWeather(city){
+async function renderWeather(city) {
   apiCity = city;
   await getWeather(apiCity);
 
@@ -46,52 +36,36 @@ async function renderWeather(city){
     currentTemp: currentCityWeather.main.temp,
     minTemp: currentCityWeather.main.temp_min,
     maxTemp: currentCityWeather.main.temp_max,
-    weatherDescription: currentCityWeather.weather[0].description
-  }
+    weatherDescription: currentCityWeather.weather[0].description,
+  };
 
   return weatherObject;
-
 }
 
 // console.log(renderWeather("los+angeles"));
 
-
-
-
-
-async function getWeatherLatLon(lat,lon) {
-
-  
-
-  requestUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
-
-  
+async function getWeatherLatLon(lat, lon) {
+  requestUrl =
+    'http://api.openweathermap.org/data/2.5/weather?lat=' +
+    lat +
+    '&lon=' +
+    lon +
+    '&appid=' +
+    WeatherApiKey;
 
   currentCityWeather = await fetch(requestUrl)
     .then(function (response) {
-
       return response.json();
     })
     .then(function (data) {
-      
-
       return data;
-
-      
-
     });
-
-
-
 }
 
-
-
-
-async function renderWeatherLatLon(lat,lon){
+async function renderWeatherLatLon(lat, lon) {
   latitude = lat;
   longitude = lon;
-  await getWeatherLatLon(latitude,longitude);
+  await getWeatherLatLon(latitude, longitude);
 
   // console.log(currentCityWeather);
 
@@ -100,15 +74,10 @@ async function renderWeatherLatLon(lat,lon){
     currentTemp: currentCityWeather.main.temp,
     minTemp: currentCityWeather.main.temp_min,
     maxTemp: currentCityWeather.main.temp_max,
-    weatherDescription: currentCityWeather.weather[0].description
-  }
+    weatherDescription: currentCityWeather.weather[0].description,
+  };
 
   return weatherObject;
-
 }
 
 // console.log(renderWeatherLatLon(34.0522,-118.2437));
-
-
-
-

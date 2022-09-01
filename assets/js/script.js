@@ -1,9 +1,13 @@
 var firewood = document.getElementById('firewood');
 var showers = document.getElementById('showers');
 var CellPhone = document.getElementById('CellPhone');
-var Dropdown = document.getElementById('state');
+var Dropdown = document.getElementById('Dropdown');
+var firewoodCheckBox = document.getElementById('firewood');
+var showersCheckBox = document.getElementById('showers');
+var CellPhoneCheckBox = document.getElementById('CellPhone');
 var button = document.getElementById('button');
 var apiKey = '6pJRVZpzh01tEktlNNLSmI1hVw5wXNTOuoca58uW';
+
 var stateCode = '';
 var state = '&api_key=';
 var stateNameArray = [
@@ -117,10 +121,6 @@ var requestUrl =
   state +
   apiKey;
 
-// todo var createDiv = $('<div>').addClass(
-//   ' box column has-background-primary is-size-2 is-2 has-text-centered'
-// );
-
 // Campground API fetch request function
 function getApi() {
   // console.log(Dropdown.value);
@@ -139,33 +139,60 @@ function getApi() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       saveChecked();
       displayData(data);
     });
 }
 // firewood option
 var displayData = function (data) {
-  console.log(data);
-  // var firewoodSale = data.amenities.firewoodForSale;
-  // console.log(firewoodSale);
-  // console.log(data.data[i]);
+  var finalCampsite = [];
+  var campBox = $('.camp');
+  if (campBox.children()) {
+    campBox.children().remove();
+  }
+  var createDiv = $('<div>').addClass(
+    ' has-text-centered box is-size-2 has-background-success-light block has-text-warning-dark'
+  );
+
   for (let i = 0; i < data.data.length; i++) {
-    // console.log(data.data[i].amenities.firewoodForSale);
+    var url = data.data[i].url;
+    var website = $('<a>').attr('href', url).text(url);
+    // var text = $('<li>').text(website);
+    var willAddCampSite = true;
+    var firewoodAvailable =
+      data.data[i].amenities.firewoodForSale.includes('Yes');
+    // var showerAvailable =
+    //   data.data[i].amenities.showers[0] !== 'None' &&
+    //   data.data[i].amenities.showers.length;
+    var cellPhoneAvailable =
+      data.data[i].amenities.cellPhoneReception.includes('Yes');
     // * looking for firewood available for purchase
-    if (data.data[i].amenities.firewoodForSale.includes('Yes')) {
-      // console.log(data.data[i]);
+    if (firewoodCheckBox.checked) {
+      if (!firewoodAvailable) {
+        willAddCampSite = false;
+      }
+      // console.log();
       // * looking for showers
-    } else if (
-      data.data[i].amenities.showers[0] !== 'None' &&
-      data.data[i].amenities.showers.length
-    ) {
+      // } else if (showersCheckBox.checked) {
+      //   if (!showerAvailable) {
+      //     willAddCampSite = false;
+      //   }
       // console.log(data.data[i]);
       // *looking for cellphone reception
-    } else if (data.data[i].amenities.cellPhoneReception.includes('Yes')) {
+    } else if (CellPhoneCheckBox.checked) {
+      if (!cellPhoneAvailable) {
+        willAddCampSite = false;
+      }
       // console.log(data.data[i]);
     }
+    if (willAddCampSite) {
+      finalCampsite.push(data.data[i]);
+      createDiv.append(website);
+      campBox.append(createDiv);
+    }
   }
+  console.log('final campsite', finalCampsite);
 };
 
 /* Local Storage section */
@@ -184,11 +211,6 @@ console.log(typeof chosenStates);
 
 // This will save the checked boxes within the local storage, or update the checkboxes when they have not been checked
 function saveChecked() {
-  var firewoodCheckBox = document.getElementById('firewood');
-  var showersCheckBox = document.getElementById('showers');
-  var CellPhoneCheckBox = document.getElementById('CellPhone');
-  var stateDropDown = document.getElementById('state');
-
   localStorage.setItem('savedFirewood', 'false');
   localStorage.setItem('savedShowers', 'false');
   localStorage.setItem('savedCellPhone', 'false');
@@ -206,7 +228,7 @@ function saveChecked() {
   }
 
   // When the user clicks on a state, the state that they submit with the button will appear in their local storage
-  if (stateDropDown) {
+  if (Dropdown) {
     chosenStates.push(Dropdown.value);
     localStorage.setItem('previousStates', JSON.stringify(chosenStates));
   }
