@@ -152,13 +152,13 @@ var displayData = function (data) {
     campBox.children().remove();
   }
   var createDiv = $('<div>').addClass(
-    ' has-text-centered box is-size-2 has-background-success-dark has-text-warning-dark'
+    ' has-text-centered box is-size-2 has-background-success-light block has-text-warning-dark'
   );
 
   for (let i = 0; i < data.data.length; i++) {
     var url = data.data[i].url;
     var website = $('<a>').attr('href', url).text(url);
-    // var text = $('<h1>').text(website);
+    // var text = $('<li>').text(website);
     var willAddCampSite = true;
     var firewoodAvailable =
       data.data[i].amenities.firewoodForSale.includes('Yes');
