@@ -192,7 +192,7 @@ var displayData = function (data) {
       campBox.append(createDiv);
     }
   }
-  console.log('final campsite', finalCampsite);
+  // console.log('final campsite', finalCampsite);
 };
 
 /* Local Storage section */
