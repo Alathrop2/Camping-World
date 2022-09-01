@@ -9,7 +9,6 @@ let weatherObject = {};
 
 // End of weather api variables
 
-
 var firewood = document.getElementById('firewood');
 var showers = document.getElementById('showers');
 var laundry = document.getElementById('laundry');
@@ -176,9 +175,9 @@ var displayData = function (data) {
       // console.log(data.data[i]);
     }
   }
+
+  // console.log('final campsite', finalCampsite);
 };
-
-
 
 // Weather api functions
 
@@ -220,10 +219,4 @@ async function renderWeatherLatLon(lat, lon) {
 
 // End of weather api functions
 
-
 button.addEventListener('click', getApi);
-
-
-
-
-
