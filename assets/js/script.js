@@ -157,14 +157,19 @@ function getApi() {
 var displayData = function (data) {
   var finalCampsite = [];
   var campBox = $('.camp');
+  var resultsBox = $('.resultsBox');
   if (campBox.children()) {
     campBox.children().remove();
   }
-  var createDiv = $('<div>').addClass(
-    ' has-text-centered box is-size-2 has-background-success-light has-text-warning-dark'
-  );
 
   for (let i = 0; i < data.data.length; i++) {
+    var createDiv = $('<div>').addClass(
+      '  has-text-centered box is-size-2 has-background-success-light has-text-warning-dark '
+    );
+    var createDiv2 = $('<div>').addClass(
+      ' has-text-centered box is-size-2 has-background-success-light has-text-warning-dark  '
+    );
+
     var url = data.data[i].url;
 
     var website = $('<a>').attr('href', url).text(url);
@@ -210,7 +215,8 @@ var displayData = function (data) {
           var weatherH1 = $('<p>');
           weatherH1.text(num);
 
-          createDiv.append(weatherH1);
+          createDiv2.append(weatherH1);
+          campBox.append(createDiv2);
           // some el . append(weatherH1)
         }
       );
