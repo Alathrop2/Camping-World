@@ -1,7 +1,7 @@
 var firewood = document.getElementById('firewood');
 var showers = document.getElementById('showers');
 var CellPhone = document.getElementById('CellPhone');
-var Dropdown = document.getElementById('state');
+var Dropdown = document.getElementById('Dropdown');
 var button = document.getElementById('button');
 var apiKey = '6pJRVZpzh01tEktlNNLSmI1hVw5wXNTOuoca58uW';
 var stateCode = '';
@@ -180,14 +180,14 @@ if (localStorage.getItem('previousStates')) {
   var chosenStates = [];
   console.log('no previous states exist');
 }
-console.log(typeof chosenStates);
+// console.log(typeof chosenStates);
 
 // This will save the checked boxes within the local storage, or update the checkboxes when they have not been checked
 function saveChecked() {
   var firewoodCheckBox = document.getElementById('firewood');
   var showersCheckBox = document.getElementById('showers');
   var CellPhoneCheckBox = document.getElementById('CellPhone');
-  var stateDropDown = document.getElementById('state');
+  var stateDropDown = document.getElementById('Dropdown');
 
   localStorage.setItem('savedFirewood', 'false');
   localStorage.setItem('savedShowers', 'false');

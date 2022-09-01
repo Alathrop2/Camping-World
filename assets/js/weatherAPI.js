@@ -1,6 +1,6 @@
 
 var apiCity = "seattle";
-var apiKey = '4d63ba9d93efddcbcaf8047f7d2ec8b0';
+var weatherAPIKey = '4d63ba9d93efddcbcaf8047f7d2ec8b0';
 var requestUrl;
 var latitude;
 var longitude;
