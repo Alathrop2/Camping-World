@@ -154,10 +154,10 @@ function getApi() {
     });
 }
 // firewood option
-var displayData = function (data) {
+var displayData = async function (data) {
   var finalCampsite = [];
   var campBox = $('.camp');
-  var resultsBox = $('.resultsBox');
+  // var resultsBox = $('.resultsBox');
   if (campBox.children()) {
     campBox.children().remove();
   }
@@ -209,17 +209,18 @@ var displayData = function (data) {
       finalCampsite.push(data.data[i]);
       createDiv.append(website);
       campBox.append(createDiv);
-      renderWeatherLatLon(data.data[i].latitude, data.data[i].longitude).then(
-        function (num) {
-          // write num to the page
-          var weatherH1 = $('<p>');
-          weatherH1.text(num);
 
-          createDiv.append(weatherH1);
-          campBox.append(createDiv);
-          // some el . append(weatherH1)
-        }
-      );
+      await renderWeatherLatLon(
+        data.data[i].latitude,
+        data.data[i].longitude
+      ).then(function (num) {
+        // write num to the page
+        var weatherH1 = $('<p>');
+        weatherH1.text(num);
+        createDiv.append(weatherH1);
+        campBox.append(createDiv);
+        // some el . append(weatherH1)
+      });
     }
   }
   console.log('final campsite', finalCampsite);
