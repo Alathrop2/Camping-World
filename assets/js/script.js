@@ -298,7 +298,7 @@ loadChecked();
 
 async function getWeatherLatLon(lat, lon) {
   requestUrl =
-    'http://api.openweathermap.org/data/2.5/weather?lat=' +
+    'https://api.openweathermap.org/data/2.5/weather?lat=' +
     lat +
     '&lon=' +
     lon +
