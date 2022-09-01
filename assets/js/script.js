@@ -154,9 +154,11 @@ var displayData = function (data) {
   var createDiv = $('<div>').addClass(
     ' has-text-centered box is-size-2 has-background-success-dark has-text-warning-dark'
   );
-  var website = $('<h1>').text('hello there');
 
   for (let i = 0; i < data.data.length; i++) {
+    var url = data.data[i].url;
+    var website = $('<a>').attr('href', url).text(url);
+    // var text = $('<h1>').text(website);
     var willAddCampSite = true;
     var firewoodAvailable =
       data.data[i].amenities.firewoodForSale.includes('Yes');
@@ -167,8 +169,8 @@ var displayData = function (data) {
       data.data[i].amenities.cellPhoneReception.includes('Yes');
     // * looking for firewood available for purchase
     if (firewoodCheckBox.checked) {
-      if (firewoodAvailable) {
-        willAddCampSite = true;
+      if (!firewoodAvailable) {
+        willAddCampSite = false;
       }
       // console.log();
       // * looking for showers
@@ -179,8 +181,8 @@ var displayData = function (data) {
       // console.log(data.data[i]);
       // *looking for cellphone reception
     } else if (CellPhoneCheckBox.checked) {
-      if (cellPhoneAvailable) {
-        willAddCampSite = true;
+      if (!cellPhoneAvailable) {
+        willAddCampSite = false;
       }
       // console.log(data.data[i]);
     }
@@ -190,7 +192,7 @@ var displayData = function (data) {
       campBox.append(createDiv);
     }
   }
-  console.log(finalCampsite);
+  console.log('final campsite', finalCampsite);
 };
 
 /* Local Storage section */
