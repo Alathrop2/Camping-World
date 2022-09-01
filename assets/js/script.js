@@ -171,6 +171,13 @@ var displayData = async function (data) {
     );
 
     var url = data.data[i].url;
+    var reservationUrl = data.data[i].reservationUrl;
+    if (url === '') {
+      url = reservationUrl;
+    }
+    if (url === '') {
+      ('Sorry!, there is no Website for this Campground');
+    }
 
     var website = $('<a>').attr('href', url).text(url);
     //  var text = $('<h1>').text(website);
@@ -187,6 +194,7 @@ var displayData = async function (data) {
       if (!firewoodAvailable) {
         willAddCampSite = false;
       }
+      // ! "https://www.recreation.gov/camping/campgrounds/251709"
       // console.log();
       // * looking for showers
       // } else if (showersCheckBox.checked) {
