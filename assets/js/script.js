@@ -215,8 +215,8 @@ var displayData = function (data) {
           var weatherH1 = $('<p>');
           weatherH1.text(num);
 
-          createDiv2.append(weatherH1);
-          campBox.append(createDiv2);
+          createDiv.append(weatherH1);
+          campBox.append(createDiv);
           // some el . append(weatherH1)
         }
       );
@@ -321,7 +321,11 @@ async function renderWeatherLatLon(lat, lon) {
   };
   // console.log(currentCityWeather.main.temp);
 
-  return currentCityWeather.main.temp;
+  return (
+    'Current Temp is ' +
+    Math.round(((currentCityWeather.main.temp - 273.15) * 9) / 5 + 32) +
+    ' °F'
+  );
 }
 
 // End of weather api functions
