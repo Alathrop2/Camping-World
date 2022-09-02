@@ -1,6 +1,9 @@
 /* .img {
    background-image: url(../images/solo-camping-tips.jpg);
 }   */
+body{
+   background-color: black;
+}
 .hero .has-background{
    position: relative; 
    overflow: hidden;

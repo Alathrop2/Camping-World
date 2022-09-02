@@ -321,13 +321,13 @@ async function renderWeatherLatLon(lat, lon) {
 
   // console.log(currentCityWeather);
 
-  weatherObject = {
-    city: currentCityWeather.name,
-    currentTemp: currentCityWeather.main.temp,
-    minTemp: currentCityWeather.main.temp_min,
-    maxTemp: currentCityWeather.main.temp_max,
-    weatherDescription: currentCityWeather.weather[0].description,
-  };
+  // weatherObject = {
+  //   city: currentCityWeather.name,
+  //   currentTemp: currentCityWeather.main.temp,
+  //   minTemp: currentCityWeather.main.temp_min,
+  //   maxTemp: currentCityWeather.main.temp_max,
+  //   weatherDescription: currentCityWeather.weather[0].description,
+  // };
   // console.log(currentCityWeather.main.temp);
 
   return (
